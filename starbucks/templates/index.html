@@ -21,6 +21,108 @@
         td[contenteditable="true"] {
             background-color: #e6f7ff;
         }
+
+        /* nuevo codigo */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        .styled-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 1.2em;
+            min-width: 400px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .styled-table thead tr {
+            background-color: #009879;
+            color: #ffffff;
+            text-align: left;
+        }
+
+        .styled-table th,
+        .styled-table td {
+            padding: 12px 15px;
+        }
+
+        .styled-table tbody tr {
+            border-bottom: 1px solid #dddddd;
+        }
+
+        .styled-table tbody tr:nth-of-type(even) {
+            background-color: #f3f3f3;
+        }
+
+        .styled-table tbody tr:last-of-type {
+            border-bottom: 2px solid #009879;
+        }
+
+        .styled-table tbody tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        .pull-column {
+            display: flex;
+            align-items: center;
+        }
+
+        .pull-column form {
+            margin: 0 5px;
+        }
+
+        .button-increment, .button-decrement {
+            background-color: #009879;
+            border: none;
+            color: white;
+            padding: 5px 10px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 1em;
+            margin: 2px 1px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .button-increment:hover, .button-decrement:hover {
+            background-color: #007f67;
+        }
+        .buton{
+            border-radius: 20px; 
+            border: 0.5px solid #333;
+        }
+        .Pull-div{
+            display: flex;
+            justify-content: space-evenly;
+            background-color: #e6f7ff;
+        }
+        .logout-div a{
+            position: relative;
+            left: 5px;
+            top: 5px;
+            text-decoration: none;
+            background-color: rgb(199, 56, 56);
+            padding: 16px;
+            border-radius: 15px;
+            color: rgb(252, 252, 252);
+        }
+        .logout-div a:hover{
+            cursor: pointer;
+        background-color: #adbed1;
+        border: 1px solid #adbed1;
+        transform: scale(1.05);
+        transform: translateY(2px);
+        }
+        /* nuevo codigo */
     </style>
     <script>
         function enforceNumericInput(event) {
@@ -42,6 +144,7 @@
     </script>
 </head>
 <body>
+    <div class="logout-div"><a href="{% url 'logout' %}">Logout</a></div>
     <h1>Sandwiches</h1>
     <table>
         <tr>
@@ -51,104 +154,27 @@
             <th>Pull</th>
             <th>Needs Restocking</th>
         </tr>
+        {% for item in food %}
         <tr>
-            <td>Bacon Gouda</td>
+            <td>{{item.item_name}}</td>
             <td>6</td>
             <td>3 Days</td>
-            <td contenteditable="true"></td>
+            <td>
+                <div class="Pull-div">
+                    <form action="{% url 'incrementar_valor' item.id %}" method="post" style="display:inline;">
+                    {% csrf_token %}
+                    <button class="buton" type="submit">+</button>
+                    </form>
+                    <span id='item.id'>{{ item.pull }}</span>
+                    <form action="{% url 'decrementar_valor' item.id %}" method="post" style="display:inline;">
+                    {% csrf_token %}
+                    <button class="buton" type="submit">-</button></form>
+                </div>
+            </td>
             <td><input type="checkbox"></td>
         </tr>
-        <tr>
-            <td>Sausage Cheddar</td>
-            <td>6</td>
-            <td>3 Days</td>
-            <td contenteditable="true"></td>
-            <td><input type="checkbox"></td>
-        </tr>
-        <tr>
-            <td>Impossible</td>
-            <td>4</td>
-            <td>3 Days</td>
-            <td contenteditable="true"></td>
-            <td><input type="checkbox"></td>
-        </tr>
-        <tr>
-            <td>Double Smoked</td>
-            <td>6</td>
-            <td>3 Days</td>
-            <td contenteditable="true"></td>
-            <td><input type="checkbox"></td>
-        </tr>
-        <tr>
-            <td>Chicken Maple</td>
-            <td>3</td>
-            <td>3 Days</td>
-            <td contenteditable="true"></td>
-            <td><input type="checkbox"></td>
-        </tr>
-        <tr>
-            <td>Turkey Bacon</td>
-            <td>4</td>
-            <td>3 Days</td>
-            <td contenteditable="true"></td>
-            <td><input type="checkbox"></td>
-        </tr>
-        <tr>
-            <td>Spinach Feta</td>
-            <td>6</td>
-            <td>3 Days</td>
-            <td contenteditable="true"></td>
-            <td><input type="checkbox"></td>
-        </tr>
-        <tr>
-            <td>Ham and Cheese Croissant</td>
-            <td>6-8 (Depending on day)</td>
-            <td>2 Days</td>
-            <td contenteditable="true"></td>
-            <td><input type="checkbox"></td>
-        </tr>
-        <tr>
-            <td>Tomato Mozz</td>
-            <td>4</td>
-            <td>2 Days</td>
-            <td contenteditable="true"></td>
-            <td><input type="checkbox"></td>
-        </tr>
-        <tr>
-            <td>Turkey Pesto</td>
-            <td>8</td>
-            <td>2 Days</td>
-            <td contenteditable="true"></td>
-            <td><input type="checkbox"></td>
-        </tr>
-        <tr>
-            <td>Grilled Cheese</td>
-            <td>4</td>
-            <td>7 Days</td>
-            <td contenteditable="true"></td>
-            <td><input type="checkbox"></td>
-        </tr>
-        <tr>
-            <td>Pepper Egg Bites</td>
-            <td>8</td>
-            <td>7 Days</td>
-            <td contenteditable="true"></td>
-            <td><input type="checkbox"></td>
-        </tr>
-        <tr>
-            <td>Bacon Egg Bites</td>
-            <td>8</td>
-            <td>7 Days</td>
-            <td contenteditable="true"></td>
-            <td><input type="checkbox"></td>
-        </tr>
-        <tr>
-            <td>Potato Chive Bites</td>
-            <td>8</td>
-            <td>7 Days</td>
-            <td contenteditable="true"></td>
-            <td><input type="checkbox"></td>
-        </tr>
+        {% endfor %}
+
     </table>
 
     <h1>Pastries</h1>
@@ -272,3 +298,5 @@
             <td contenteditable="true"></td>
             <td><input type="checkbox"></td>
         </tr>
+    </table>
+
