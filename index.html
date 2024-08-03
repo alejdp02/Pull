@@ -21,10 +21,771 @@
         td[contenteditable="true"] {
             background-color: #e6f7ff;
         }
+        .green-check {
+            color: green;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            color: #007a5e;
+        }
+        button {
+            background-color: #007a5e;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #005f4f;
+        }
     </style>
+</head>
+<body>
+    <h1>Pastries</h1>
+    <table>
+        <tr>
+            <th>Item</th>
+            <th>Amount</th>
+            <th>Shelf Life</th>
+            <th>Pulling</th>
+            <th>Pulled</th>
+            <th>Needs Restocking</th>
+        </tr>
+        
+        <tr>
+            <td>Croissant</td>
+            <td>10-12 (Depending on day)</td>
+            <td>2 Days</td>
+            <td>
+                <select onchange="updatePullValue(this)">
+                    <option value="">None</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                    <option value="10">11</option>
+                    <option value="10">12</option>
+                </select>
+            </td>
+            <td data-type="pulled"><input type="checkbox"></td>
+            <td data-type="needsRestocking"><input type="checkbox"></td>
+        </tr>
+        <tr>
+            <td>Chocolate Croissant</td>
+            <td>6</td>
+            <td>2 Days</td>
+            <td>
+                <select onchange="updatePullValue(this)">
+                    <option value="">None</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                </select>
+            </td>
+            <td data-type="pulled"><input type="checkbox"></td>
+            <td data-type="needsRestocking"><input type="checkbox"></td>
+        </tr>
+        <tr>
+            <td>Cheese Danish</td>
+            <td>6</td>
+            <td>2 Days</td>
+            <td>
+                <select onchange="updatePullValue(this)">
+                    <option value="">None</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                </select>
+            </td>
+            <td data-type="pulled"><input type="checkbox"></td>
+            <td data-type="needsRestocking"><input type="checkbox"></td>
+        </tr>
+        <tr>
+            <td>Birthday Cake Pop</td>
+            <td>3 Packs</td>
+            <td>2 Days</td>
+            <td>
+                <select onchange="updatePullValue(this)">
+                    <option value="">None</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                </select>
+            </td>
+            <td data-type="pulled"><input type="checkbox"></td>
+            <td data-type="needsRestocking"><input type="checkbox"></td>
+        </tr>
+        <tr>
+            <td>Dog Cake Pop</td>
+            <td>3 Packs</td>
+            <td>2 Days</td>
+            <td>
+                <select onchange="updatePullValue(this)">
+                    <option value="">None</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                </select>
+            </td>
+            <td data-type="pulled"><input type="checkbox"></td>
+            <td data-type="needsRestocking"><input type="checkbox"></td>
+        </tr>
+        <tr>
+            <td>Chocolate Cake Pop</td>
+            <td>3 Packs</td>
+            <td>2 Days</td>
+            <td>
+                <select onchange="updatePullValue(this)">
+                    <option value="">None</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                </select>
+            </td>
+            <td data-type="pulled"><input type="checkbox"></td>
+            <td data-type="needsRestocking"><input type="checkbox"></td>
+        </tr>
+        <tr>
+            <td>Cookies and Cream Cake Pop</td>
+            <td>2 Packs</td>
+            <td>2 Days</td>
+            <td>
+                <select onchange="updatePullValue(this)">
+                    <option value="">None</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                </select>
+            </td>
+            <td data-type="pulled"><input type="checkbox"></td>
+            <td data-type="needsRestocking"><input type="checkbox"></td>
+        </tr>
+        <tr>
+            <td>Vanilla Bean Danish</td>
+            <td>6</td>
+            <td>2 Days</td>
+            <td>
+                <select onchange="updatePullValue(this)">
+                    <option value="">None</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                </select>
+            </td>
+            <td data-type="pulled"><input type="checkbox"></td>
+            <td data-type="needsRestocking"><input type="checkbox"></td>
+        </tr>
+        <tr>
+            <td>Vanilla Bean Scone</td>
+            <td>1 Pack</td>
+            <td>2 Days</td>
+            <td>
+                <select onchange="updatePullValue(this)">
+                    <option value="">None</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                </select>
+            </td>
+            <td data-type="pulled"><input type="checkbox"></td>
+            <td data-type="needsRestocking"><input type="checkbox"></td>
+        </tr>
+        <tr>
+            <td>Chocolate Chip Cookie</td>
+            <td>5</td>
+            <td>2 Days</td>
+            <td>
+                <select onchange="updatePullValue(this)">
+                    <option value="">None</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                </select>
+            </td>
+            <td data-type="pulled"><input type="checkbox"></td>
+            <td data-type="needsRestocking"><input type="checkbox"></td>
+        </tr>
+        <tr>
+            <td>Blueberry Muffin</td>
+            <td>1</td>
+            <td>2 Days</td>
+            <td>
+                <select onchange="updatePullValue(this)">
+                    <option value="">None</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                </select>
+            </td>
+            <td data-type="pulled"><input type="checkbox"></td>
+            <td data-type="needsRestocking"><input type="checkbox"></td>
+        </tr>
+        <tr>
+            <td>Banana Bread</td>
+            <td>6</td>
+            <td>2 Days</td>
+            <td>
+                <select onchange="updatePullValue(this)">
+                    <option value="">None</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                </select>
+            </td>
+            <td data-type="pulled"><input type="checkbox"></td>
+            <td data-type="needsRestocking"><input type="checkbox"></td>
+        </tr>
+        <tr>
+            <td>Lemon Loaf</td>
+            <td>5</td>
+            <td>2 Days</td>
+            <td>
+                <select onchange="updatePullValue(this)">
+                    <option value="">None</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                </select>
+            </td>
+            <td data-type="pulled"><input type="checkbox"></td>
+            <td data-type="needsRestocking"><input type="checkbox"></td>
+        </tr>
+        <tr>
+            <td>Pumpkin Loaf</td>
+            <td>5</td>
+            <td>2 Days</td>
+            <td>
+                <select onchange="updatePullValue(this)">
+                    <option value="">None</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                </select>
+            </td>
+            <td data-type="pulled"><input type="checkbox"></td>
+            <td data-type="needsRestocking"><input type="checkbox"></td>
+        </tr>
+        <tr>
+            <td>Coffee Cake</td>
+            <td>5</td>
+            <td>2 Days</td>
+            <td>
+                <select onchange="updatePullValue(this)">
+                    <option value="">None</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                </select>
+            </td>
+            <td data-type="pulled"><input type="checkbox"></td>
+            <td data-type="needsRestocking"><input type="checkbox"></td>
+        </tr>
+        <tr>
+            <td>Dog Cookies</td>
+            <td>Have 5 at all times</td>
+            <td>12 Days</td>
+            <td>
+                <select onchange="updatePullValue(this)">
+                    <option value="">None</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                </select>
+            </td>
+            <td data-type="pulled"><input type="checkbox"></td>
+            <td data-type="needsRestocking"><input type="checkbox"></td>
+        </tr>
+        <!-- Add more rows as needed -->
+    </table>
+
+    <h1>Sandwiches</h1>
+    <table>
+        <tr>
+            <th>Item</th>
+            <th>Amount</th>
+            <th>Shelf Life</th>
+            <th>Pulling</th>
+            <th>Pulled</th>
+            <th>Needs Restocking</th>
+        </tr>
+        <!-- Pastries Data -->
+        <tr>
+            <td>Bacon Gouda</td>
+            <td>6</td>
+            <td>3 Days</td>
+            <td>
+                <select onchange="updatePullValue(this)">
+                    <option value="">None</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                </select>
+            </td>
+            <td data-type="pulled"><input type="checkbox"></td>
+            <td data-type="needsRestocking"><input type="checkbox"></td>
+        </tr>
+        <tr>
+            <td>Sausage Cheddar</td>
+            <td>6</td>
+            <td>3 Days</td>
+            <td>
+                <select onchange="updatePullValue(this)">
+                    <option value="">None</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                </select>
+            </td>
+            <td data-type="pulled"><input type="checkbox"></td>
+            <td data-type="needsRestocking"><input type="checkbox"></td>
+        </tr>
+        <tr>
+            <td>Impossible</td>
+            <td>4</td>
+            <td>3 Days</td>
+            <td>
+                <select onchange="updatePullValue(this)">
+                    <option value="">None</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                </select>
+            </td>
+            <td data-type="pulled"><input type="checkbox"></td>
+            <td data-type="needsRestocking"><input type="checkbox"></td>
+        </tr>
+        <tr>
+            <td>Double Smoked</td>
+            <td>6</td>
+            <td>3 Days</td>
+            <td>
+                <select onchange="updatePullValue(this)">
+                    <option value="">None</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                </select>
+            </td>
+            <td data-type="pulled"><input type="checkbox"></td>
+            <td data-type="needsRestocking"><input type="checkbox"></td>
+        </tr>
+        <tr>
+            <td>Chicken Maple</td>
+            <td>3</td>
+            <td>3 Days</td>
+            <td>
+                <select onchange="updatePullValue(this)">
+                    <option value="">None</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                </select>
+            </td>
+            <td data-type="pulled"><input type="checkbox"></td>
+            <td data-type="needsRestocking"><input type="checkbox"></td>
+        </tr>
+        <tr>
+            <td>Turkey Bacon</td>
+            <td>4</td>
+            <td>3 Days</td>
+            <td>
+                <select onchange="updatePullValue(this)">
+                    <option value="">None</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                </select>
+            </td>
+            <td data-type="pulled"><input type="checkbox"></td>
+            <td data-type="needsRestocking"><input type="checkbox"></td>
+        </tr>
+        <tr>
+            <td>Spinach Feta</td>
+            <td>6</td>
+            <td>3 Days</td>
+            <td>
+                <select onchange="updatePullValue(this)">
+                    <option value="">None</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                </select>
+            </td>
+            <td data-type="pulled"><input type="checkbox"></td>
+            <td data-type="needsRestocking"><input type="checkbox"></td>
+        </tr>
+        <tr>
+            <td>Ham and Cheese Croissant</td>
+            <td>6-8 (Depending on day)</td>
+            <td>2 Days</td>
+           <td>
+                <select onchange="updatePullValue(this)">
+                    <option value="">None</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                </select>
+            </td>
+            <td data-type="pulled"><input type="checkbox"></td>
+            <td data-type="needsRestocking"><input type="checkbox"></td>
+        </tr>
+        <tr>
+            <td>Tomato Mozz</td>
+            <td>4</td>
+            <td>2 Days</td>
+            <td>
+                <select onchange="updatePullValue(this)">
+                    <option value="">None</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                </select>
+            </td>
+            <td data-type="pulled"><input type="checkbox"></td>
+            <td data-type="needsRestocking"><input type="checkbox"></td>
+        </tr>
+        <tr>
+            <td>Turkey Pesto</td>
+            <td>4</td>
+            <td>2 Days</td>
+            <td>
+                <select onchange="updatePullValue(this)">
+                    <option value="">None</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                </select>
+            </td>
+            <td data-type="pulled"><input type="checkbox"></td>
+            <td data-type="needsRestocking"><input type="checkbox"></td>
+        </tr>
+        <tr>
+            <td>Grilled Cheese</td>
+            <td>4</td>
+            <td>2 Days</td>
+           <td>
+                <select onchange="updatePullValue(this)">
+                    <option value="">None</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                </select>
+            </td>
+            <td data-type="pulled"><input type="checkbox"></td>
+            <td data-type="needsRestocking"><input type="checkbox"></td>
+        </tr>
+        <tr>
+            <td>Pepper Egg Bites</td>
+            <td>8</td>
+            <td>7 Days</td>
+           <td>
+                <select onchange="updatePullValue(this)">
+                    <option value="">None</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                </select>
+            </td>
+            <td data-type="pulled"><input type="checkbox"></td>
+            <td data-type="needsRestocking"><input type="checkbox"></td>
+        </tr>
+        <tr>
+            <td>Bacon Egg Bites</td>
+            <td>8</td>
+            <td>7 Days</td>
+            <td>
+                <select onchange="updatePullValue(this)">
+                    <option value="">None</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                </select>
+            </td>
+            <td data-type="pulled"><input type="checkbox"></td>
+            <td data-type="needsRestocking"><input type="checkbox"></td>
+        </tr>
+        <tr>
+            <td>Potato Chive Bites</td>
+            <td>8</td>
+            <td>7 Days</td>
+            <td>
+                <select onchange="updatePullValue(this)">
+                    <option value="">None</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                </select>
+            </td>
+            <td data-type="pulled"><input type="checkbox"></td>
+            <td data-type="needsRestocking"><input type="checkbox"></td>
+        </tr>
+        <tr>
+            <td>Egg Pesto Mozzarella</td>
+            <td>5</td>
+            <td>3 Days</td>
+            <td>
+                <select onchange="updatePullValue(this)">
+                    <option value="">None</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                </select>
+            </td>
+            <td data-type="pulled"><input type="checkbox"></td>
+            <td data-type="needsRestocking"><input type="checkbox"></td>
+        </tr>
+        <tr>
+            <td>Bacon Sausage and Egg Wrap</td>
+            <td>3</td>
+            <td>3 Days</td>
+            <td>
+                <select onchange="updatePullValue(this)">
+                    <option value="">None</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                </select>
+            </td>
+            <td data-type="pulled"><input type="checkbox"></td>
+            <td data-type="needsRestocking"><input type="checkbox"></td>
+        </tr>
+        <!-- Add more rows as needed -->
+    </table>
+
+    <button onclick="showDetails()">Send</button>
+
     <script>
         function enforceNumericInput(event) {
-            
             var key = event.key;
             if (!/^[0-9]$/.test(key) && !['Backspace', 'ArrowLeft', 'ArrowRight', 'Delete', 'Tab'].includes(key)) {
                 event.preventDefault();
@@ -38,237 +799,66 @@
             });
         }
 
-        window.onload = setupInputFields;
-    </script>
-</head>
-<body>
-    <h1>Sandwiches</h1>
-    <table>
-        <tr>
-            <th>Item</th>
-            <th>Amount Needed</th>
-            <th>Shelf Life</th>
-            <th>Pull</th>
-            <th>Needs Restocking</th>
-        </tr>
-        <tr>
-            <td>Bacon Gouda</td>
-            <td>6</td>
-            <td>3 Days</td>
-            <td contenteditable="true"></td>
-            <td><input type="checkbox"></td>
-        </tr>
-        <tr>
-            <td>Sausage Cheddar</td>
-            <td>6</td>
-            <td>3 Days</td>
-            <td contenteditable="true"></td>
-            <td><input type="checkbox"></td>
-        </tr>
-        <tr>
-            <td>Impossible</td>
-            <td>4</td>
-            <td>3 Days</td>
-            <td contenteditable="true"></td>
-            <td><input type="checkbox"></td>
-        </tr>
-        <tr>
-            <td>Double Smoked</td>
-            <td>6</td>
-            <td>3 Days</td>
-            <td contenteditable="true"></td>
-            <td><input type="checkbox"></td>
-        </tr>
-        <tr>
-            <td>Chicken Maple</td>
-            <td>3</td>
-            <td>3 Days</td>
-            <td contenteditable="true"></td>
-            <td><input type="checkbox"></td>
-        </tr>
-        <tr>
-            <td>Turkey Bacon</td>
-            <td>4</td>
-            <td>3 Days</td>
-            <td contenteditable="true"></td>
-            <td><input type="checkbox"></td>
-        </tr>
-        <tr>
-            <td>Spinach Feta</td>
-            <td>6</td>
-            <td>3 Days</td>
-            <td contenteditable="true"></td>
-            <td><input type="checkbox"></td>
-        </tr>
-        <tr>
-            <td>Ham and Cheese Croissant</td>
-            <td>6-8 (Depending on day)</td>
-            <td>2 Days</td>
-            <td contenteditable="true"></td>
-            <td><input type="checkbox"></td>
-        </tr>
-        <tr>
-            <td>Tomato Mozz</td>
-            <td>4</td>
-            <td>2 Days</td>
-            <td contenteditable="true"></td>
-            <td><input type="checkbox"></td>
-        </tr>
-        <tr>
-            <td>Turkey Pesto</td>
-            <td>8</td>
-            <td>2 Days</td>
-            <td contenteditable="true"></td>
-            <td><input type="checkbox"></td>
-        </tr>
-        <tr>
-            <td>Grilled Cheese</td>
-            <td>4</td>
-            <td>7 Days</td>
-            <td contenteditable="true"></td>
-            <td><input type="checkbox"></td>
-        </tr>
-        <tr>
-            <td>Pepper Egg Bites</td>
-            <td>8</td>
-            <td>7 Days</td>
-            <td contenteditable="true"></td>
-            <td><input type="checkbox"></td>
-        </tr>
-        <tr>
-            <td>Bacon Egg Bites</td>
-            <td>8</td>
-            <td>7 Days</td>
-            <td contenteditable="true"></td>
-            <td><input type="checkbox"></td>
-        </tr>
-        <tr>
-            <td>Potato Chive Bites</td>
-            <td>8</td>
-            <td>7 Days</td>
-            <td contenteditable="true"></td>
-            <td><input type="checkbox"></td>
-        </tr>
-    </table>
+        function togglePulledCheck(event) {
+            var checkBox = event.target;
+            var row = checkBox.closest('tr');
+            var pulledCell = row.querySelector('td[data-type="pulled"]');
+            pulledCell.innerHTML = checkBox.checked ? '<span class="green-check">✔</span>' : '';
+        }
 
-    <h1>Pastries</h1>
-    <table>
-        <tr>
-            <th>Item</th>
-            <th>Amount</th>
-            <th>Shelf Life</th>
-            <th>Pulled</th>
-            <th>Needs Restocking</th>
-        </tr>
-        <tr>
-            <td>Croissant</td>
-            <td>10-12 (Depending on day)</td>
-            <td>2 Days</td>
-            <td contenteditable="true"></td>
-            <td><input type="checkbox"></td>
-        </tr>
-        <tr>
-            <td>Chocolate Croissant</td>
-            <td>6</td>
-            <td>2 Days</td>
-            <td contenteditable="true"></td>
-            <td><input type="checkbox"></td>
-        </tr>
-        <tr>
-            <td>Cheese Danish</td>
-            <td>6</td>
-            <td>2 Days</td>
-            <td contenteditable="true"></td>
-            <td><input type="checkbox"></td>
-        </tr>
-        <tr>
-            <td>Birthday Cake Pop</td>
-            <td>6</td>
-            <td>2 Days</td>
-            <td contenteditable="true"></td>
-            <td><input type="checkbox"></td>
-        </tr>
-        <tr>
-            <td>Dog Cake Pop</td>
-            <td>6</td>
-            <td>2 Days</td>
-            <td contenteditable="true"></td>
-            <td><input type="checkbox"></td>
-        </tr>
-        <tr>
-            <td>Chocolate Cake Pop</td>
-            <td>6</td>
-            <td>2 Days</td>
-            <td contenteditable="true"></td>
-            <td><input type="checkbox"></td>
-        </tr>
-        <tr>
-            <td>Cookies and Cream Cake Pop</td>
-            <td>6</td>
-            <td>2 Days</td>
-            <td contenteditable="true"></td>
-            <td><input type="checkbox"></td>
-        </tr>
-        <tr>
-            <td>Vanilla Bean Danish</td>
-            <td>6</td>
-            <td>2 Days</td>
-            <td contenteditable="true"></td>
-            <td><input type="checkbox"></td>
-        </tr>
-        <tr>
-            <td>Vanilla Bean Scone</td>
-            <td>1 Pack</td>
-            <td>2 Days</td>
-            <td contenteditable="true"></td>
-            <td><input type="checkbox"></td>
-        </tr>
-        <tr>
-            <td>Chocolate Chip Cookie</td>
-            <td>5 (2 Packs)</td>
-            <td>2 Days</td>
-            <td contenteditable="true"></td>
-            <td><input type="checkbox"></td>
-        </tr>
-        <tr>
-            <td>Blueberry Muffin</td>
-            <td>6</td>
-            <td>2 Days</td>
-            <td contenteditable="true"></td>
-            <td><input type="checkbox"></td>
-        </tr>
-        <tr>
-            <td>Banana Bread</td>
-            <td>4</td>
-            <td>2 Days</td>
-            <td contenteditable="true"></td>
-            <td><input type="checkbox"></td>
-        </tr>
-        <tr>
-            <td>Lemon Loaf</td>
-            <td>4</td>
-            <td>2 Days</td>
-            <td contenteditable="true"></td>
-            <td><input type="checkbox"></td>
-        </tr>
-        <tr>
-            <td>Pumpkin Loaf</td>
-            <td>4</td>
-            <td>2 Days</td>
-            <td contenteditable="true"></td>
-            <td><input type="checkbox"></td>
-        </tr>
-        <tr>
-            <td>Coffee Cake</td>
-            <td>Have 6 at all times</td>
-            <td>2 Days</td>
-            <td contenteditable="true"></td>
-            <td><input type="checkbox"></td>
-        </tr>
-        <tr>
-            <td>Dog Cookies</td>
-            <td>Have 5 at all times</td>
-            <td>12 Days</td>
-            <td contenteditable="true"></td>
-            <td><input type="checkbox"></td>
-        </tr>
+        function toggleRestockingCheck(event) {
+            var checkBox = event.target;
+            var row = checkBox.closest('tr');
+            var needsRestockingCell = row.querySelector('td[data-type="needsRestocking"]');
+            needsRestockingCell.innerHTML = checkBox.checked ? '<span class="green-check">✔</span>' : '';
+        }
+
+        function showDetails() {
+            var pulledItems = [];
+            var restockingItems = [];
+            var rows = document.querySelectorAll('table tr');
+            rows.forEach(function(row) {
+                var itemCell = row.querySelector('td');
+                if (itemCell) {
+                    var itemName = itemCell.innerText.trim();
+                    var amountCell = row.querySelector('td[contenteditable="true"]');
+                    var pulledCheckBox = row.querySelector('td[data-type="pulled"] input[type="checkbox"]');
+                    var needsRestockingCheckBox = row.querySelector('td[data-type="needsRestocking"] input[type="checkbox"]');
+
+                    if (amountCell && amountCell.innerText.trim() !== '') {
+                        var amountText = amountCell.innerText.trim();
+                        var amount = parseInt(amountText, 10);
+                        if (!isNaN(amount) && pulledCheckBox && pulledCheckBox.checked) {
+                            pulledItems.push({ name: itemName, amount: amount });
+                        }
+                    }
+
+                    if (needsRestockingCheckBox && needsRestockingCheckBox.checked) {
+                        restockingItems.push(itemName);
+                    }
+                }
+            });
+
+            pulledItems.sort((a, b) => a.name.localeCompare(b.name));
+            restockingItems.sort();
+
+            var pulledItemsText = pulledItems.map(item => `${item.name}: ${item.amount}`).join('\n');
+            var restockingItemsText = restockingItems.join('\n');
+
+            alert(`Items Pulled:\n${pulledItemsText}\n\nItems Needing Restocking:\n${restockingItemsText}`);
+        }
+
+        window.onload = function() {
+            setupInputFields();
+            var pulledCheckBoxes = document.querySelectorAll('td[data-type="pulled"] input[type="checkbox"]');
+            pulledCheckBoxes.forEach(function(checkBox) {
+                checkBox.addEventListener('change', togglePulledCheck);
+            });
+            var restockingCheckBoxes = document.querySelectorAll('td[data-type="needsRestocking"] input[type="checkbox"]');
+            restockingCheckBoxes.forEach(function(checkBox) {
+                checkBox.addEventListener('change', toggleRestockingCheck);
+            });
+        }
+    </script>
+</body>
+</html>
