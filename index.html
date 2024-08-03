@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Starbucks Pull List</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        td[contenteditable="true"] {
+            background-color: #e6f7ff;
+        }
+    </style>
+    <script>
+        function enforceNumericInput(event) {
+            // Allow only numeric input
+            var key = event.key;
+            if (!/^[0-9]$/.test(key) && !['Backspace', 'ArrowLeft', 'ArrowRight', 'Delete', 'Tab'].includes(key)) {
+                event.preventDefault();
+            }
+        }
+
+        function setupInputFields() {
+            var cells = document.querySelectorAll('td[contenteditable="true"]');
+            cells.forEach(function(cell) {
+                cell.addEventListener('keydown', enforceNumericInput);
+            });
+        }
+
+        window.onload = setupInputFields;
+    </script>
+</head>
+<body>
+    <h1>Sandwiches</h1>
+    <table>
+        <tr>
+            <th>Item</th>
+            <th>Amount Needed</th>
+            <th>Shelf Life</th>
+            <th>Pull</th>
+            <th>Needs Restocking</th>
+        </tr>
+        <tr>
+            <td>Bacon Gouda</td>
+            <td>6</td>
+            <td>3 Days</td>
+            <td contenteditable="true"></td>
+            <td><input type="checkbox"></td>
+        </tr>
+        <tr>
+            <td>Sausage Cheddar</td>
+            <td>6</td>
+            <td>3 Days</td>
+            <td contenteditable="true"></td>
+            <td><input type="checkbox"></td>
+        </tr>
+        <tr>
+            <td>Impossible</td>
+            <td>4</td>
+            <td>3 Days</td>
+            <td contenteditable="true"></td>
+            <td><input type="checkbox"></td>
+        </tr>
+        <tr>
+            <td>Double Smoked</td>
+            <td>6</td>
+            <td>3 Days</td>
+            <td contenteditable="true"></td>
+            <td><input type="checkbox"></td>
+        </tr>
+        <tr>
+            <td>Chicken Maple</td>
+            <td>3</td>
+            <td>3 Days</td>
+            <td contenteditable="true"></td>
+            <td><input type="checkbox"></td>
+        </tr>
+        <tr>
+            <td>Turkey Bacon</td>
+            <td>4</td>
+            <td>3 Days</td>
+            <td contenteditable="true"></td>
+            <td><input type="checkbox"></td>
+        </tr>
+        <tr>
+            <td>Spinach Feta</td>
+            <td>6</td>
+            <td>3 Days</td>
+            <td contenteditable="true"></td>
+            <td><input type="checkbox"></td>
+        </tr>
+        <tr>
+            <td>Ham and Cheese Croissant</td>
+            <td>6-8 (Depending on day)</td>
+            <td>2 Days</td>
+            <td contenteditable="true"></td>
+            <td><input type="checkbox"></td>
+        </tr>
+        <tr>
+            <td>Tomato Mozz</td>
+            <td>4</td>
+            <td>2 Days</td>
+            <td contenteditable="true"></td>
+            <td><input type="checkbox"></td>
+        </tr>
+        <tr>
+            <td>Turkey Pesto</td>
+            <td>8</td>
+            <td>2 Days</td>
+            <td contenteditable="true"></td>
+            <td><input type="checkbox"></td>
+        </tr>
+        <tr>
+            <td>Grilled Cheese</td>
+            <td>4</td>
+            <td>7 Days</td>
+            <td contenteditable="true"></td>
+            <td><input type="checkbox"></td>
+        </tr>
+        <tr>
+            <td>Pepper Egg Bites</td>
+            <td>8</td>
+            <td>7 Days</td>
+            <td contenteditable="true"></td>
+            <td><input type="checkbox"></td>
+        </tr>
+        <tr>
+            <td>Bacon Egg Bites</td>
+            <td>8</td>
+            <td>7 Days</td>
+            <td contenteditable="true"></td>
+            <td><input type="checkbox"></td>
+        </tr>
+        <tr>
+            <td>Potato Chive Bites</td>
+            <td>8</td>
+            <td>7 Days</td>
+            <td contenteditable="true"></td>
+            <td><input type="checkbox"></td>
+        </tr>
+    </table>
+
+    <h1>Pastries</h1>
+    <table>
+        <tr>
+            <th>Item</th>
+            <th>Amount</th>
+            <th>Shelf Life</th>
+            <th>Pulled</th>
+            <th>Needs Restocking</th>
+        </tr>
+        <tr>
+            <td>Croissant</td>
+            <td>10-12 (Depending on day)</td>
+            <td>2 Days</td>
+            <td contenteditable="true"></td>
+            <td><input type="checkbox"></td>
+        </tr>
+        <tr>
+            <td>Chocolate Croissant</td>
+            <td>6</td>
+            <td>2 Days</td>
+            <td contenteditable="true"></td>
+            <td><input type="checkbox"></td>
+        </tr>
+        <tr>
+            <td>Cheese Danish</td>
+            <td>6</td>
+            <td>2 Days</td>
+            <td contenteditable="true"></td>
+            <td><input type="checkbox"></td>
+        </tr>
+        <tr>
+            <td>Birthday Cake Pop</td>
+            <td>6</td>
+            <td>2 Days</td>
+            <td contenteditable="true"></td>
+            <td><input type="checkbox"></td>
+        </tr>
+        <tr>
+            <td>Dog Cake Pop</td>
+            <td>6</td>
+            <td>2 Days</td>
+            <td contenteditable="true"></td>
+            <td><input type="checkbox"></td>
+        </tr>
+        <tr>
+            <td>Chocolate Cake Pop</td>
+            <td>6</td>
+            <td>2 Days</td>
+            <td contenteditable="true"></td>
+            <td><input type="checkbox"></td>
+        </tr>
+        <tr>
+            <td>Cookies and Cream Cake Pop</td>
+            <td>6</td>
+            <td>2 Days</td>
+            <td contenteditable="true"></td>
+            <td><input type="checkbox"></td>
+        </tr>
+        <tr>
+            <td>Vanilla Bean Danish</td>
+            <td>6</td>
+            <td>2 Days</td>
+            <td contenteditable="true"></td>
+            <td><input type="checkbox"></td>
+        </tr>
+        <tr>
+            <td>Vanilla Bean Scone</td>
+            <td>1 Pack</td>
+            <td>2 Days</td>
+            <td contenteditable="true"></td>
+            <td><input type="checkbox"></td>
+        </tr>
+        <tr>
+            <td>Chocolate Chip Cookie</td>
+            <td>5 (2 Packs)</td>
+            <td>2 Days</td>
+            <td contenteditable="true"></td>
+            <td><input type="checkbox"></td>
+        </tr>
+        <tr>
+            <td>Blueberry Muffin</td>
+            <td>6</td>
+            <td>2 Days</td>
+            <td contenteditable="true"></td>
+            <td><input type="checkbox"></td>
+        </tr>
+        <tr>
+            <td>Banana Bread</td>
+            <td>4</td>
+            <td>2 Days</td>
+            <td contenteditable="true"></td>
+            <td><input type="checkbox"></td>
+        </tr>
+        <tr>
+            <td>Lemon Loaf</td>
+            <td>4</td>
+            <td>2 Days</td>
+            <td contenteditable="true"></td>
+            <td><input type="checkbox"></td>
+        </tr>
+        <tr>
+            <td>Pumpkin Loaf</td>
+            <td>4</td>
+            <td>2 Days</td>
+            <td contenteditable="true"></td>
+            <td><input type="checkbox"></td>
+        </tr>
+        <tr>
+            <td>Coffee Cake</td>
+            <td>Have 6 at all times</td>
+            <td>2 Days</td>
+            <td contenteditable="true"></td>
+            <td><input type="checkbox"></td>
+        </tr>
+        <tr>
+            <td>Dog Cookies</td>
+            <td>Have 5 at all times</td>
+            <td>12 Days</td>
+            <td contenteditable="true"></td>
+            <td><input type="checkbox"></td>
+        </tr>
