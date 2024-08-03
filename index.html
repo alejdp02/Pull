@@ -24,7 +24,7 @@
     </style>
     <script>
         function enforceNumericInput(event) {
-            // Allow only numeric input
+            
             var key = event.key;
             if (!/^[0-9]$/.test(key) && !['Backspace', 'ArrowLeft', 'ArrowRight', 'Delete', 'Tab'].includes(key)) {
                 event.preventDefault();
