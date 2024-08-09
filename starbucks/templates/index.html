@@ -1,10 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Starbucks Pull List</title>
+{% extends 'base.html' %}
+{% block content %}
     <style>
+        h1{
+            margin-top: 50px;
+            padding-top: 50px;
+        }
         table {
             width: 100%;
             border-collapse: collapse;
@@ -105,23 +105,20 @@
             justify-content: space-evenly;
             background-color: #e6f7ff;
         }
-        .logout-div a{
-            position: relative;
-            left: 5px;
-            top: 5px;
-            text-decoration: none;
-            background-color: rgb(199, 56, 56);
-            padding: 16px;
-            border-radius: 15px;
-            color: rgb(252, 252, 252);
-        }
-        .logout-div a:hover{
+        .button-delete {
+            background-color: #dc3545;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
             cursor: pointer;
-        background-color: #adbed1;
-        border: 1px solid #adbed1;
-        transform: scale(1.05);
-        transform: translateY(2px);
+            transition: background-color 0.3s ease;
         }
+
+        .button-delete:hover {
+            background-color: #c82333;
+        }
+
         /* nuevo codigo */
     </style>
     <script>
@@ -144,7 +141,7 @@
     </script>
 </head>
 <body>
-    <div class="logout-div"><a href="{% url 'logout' %}">Logout</a></div>
+    
     <h1>Sandwiches</h1>
     <table>
         <tr>
@@ -153,12 +150,13 @@
             <th>Shelf Life</th>
             <th>Pull</th>
             <th>Needs Restocking</th>
+            <th>Delete</th>
         </tr>
         {% for item in food %}
         <tr>
             <td>{{item.item_name}}</td>
-            <td>6</td>
-            <td>3 Days</td>
+            <td>{{item.amount}}</td>
+            <td>{{item.shelf_life}} Days</td>
             <td>
                 <div class="Pull-div">
                     <form action="{% url 'incrementar_valor' item.id %}" method="post" style="display:inline;">
@@ -171,132 +169,25 @@
                     <button class="buton" type="submit">-</button></form>
                 </div>
             </td>
-            <td><input type="checkbox"></td>
+            <td>
+                <form action="{% url 'restocking' item.id %}" method="post" id="restocking-form-{{ item.id }}">
+                {% csrf_token %}
+                <input type="checkbox" name="check_restocking" 
+                       onchange="document.getElementById('restocking-form-{{ item.id }}').submit();" 
+                       {% if item.check_restocking %} checked {% endif %}>
+                </form>
+            </td>
+            <td>
+                <form action="{% url 'delete' item.id %}" method="post" style="display:inline;">
+                    {% csrf_token %}
+                    <button type="submit" class="button-delete">Delete</button>
+                </form>
+            </td>
         </tr>
         {% endfor %}
 
     </table>
 
-    <h1>Pastries</h1>
-    <table>
-        <tr>
-            <th>Item</th>
-            <th>Amount</th>
-            <th>Shelf Life</th>
-            <th>Pulled</th>
-            <th>Needs Restocking</th>
-        </tr>
-        <tr>
-            <td>Croissant</td>
-            <td>10-12 (Depending on day)</td>
-            <td>2 Days</td>
-            <td contenteditable="true"></td>
-            <td><input type="checkbox"></td>
-        </tr>
-        <tr>
-            <td>Chocolate Croissant</td>
-            <td>6</td>
-            <td>2 Days</td>
-            <td contenteditable="true"></td>
-            <td><input type="checkbox"></td>
-        </tr>
-        <tr>
-            <td>Cheese Danish</td>
-            <td>6</td>
-            <td>2 Days</td>
-            <td contenteditable="true"></td>
-            <td><input type="checkbox"></td>
-        </tr>
-        <tr>
-            <td>Birthday Cake Pop</td>
-            <td>6</td>
-            <td>2 Days</td>
-            <td contenteditable="true"></td>
-            <td><input type="checkbox"></td>
-        </tr>
-        <tr>
-            <td>Dog Cake Pop</td>
-            <td>6</td>
-            <td>2 Days</td>
-            <td contenteditable="true"></td>
-            <td><input type="checkbox"></td>
-        </tr>
-        <tr>
-            <td>Chocolate Cake Pop</td>
-            <td>6</td>
-            <td>2 Days</td>
-            <td contenteditable="true"></td>
-            <td><input type="checkbox"></td>
-        </tr>
-        <tr>
-            <td>Cookies and Cream Cake Pop</td>
-            <td>6</td>
-            <td>2 Days</td>
-            <td contenteditable="true"></td>
-            <td><input type="checkbox"></td>
-        </tr>
-        <tr>
-            <td>Vanilla Bean Danish</td>
-            <td>6</td>
-            <td>2 Days</td>
-            <td contenteditable="true"></td>
-            <td><input type="checkbox"></td>
-        </tr>
-        <tr>
-            <td>Vanilla Bean Scone</td>
-            <td>1 Pack</td>
-            <td>2 Days</td>
-            <td contenteditable="true"></td>
-            <td><input type="checkbox"></td>
-        </tr>
-        <tr>
-            <td>Chocolate Chip Cookie</td>
-            <td>5 (2 Packs)</td>
-            <td>2 Days</td>
-            <td contenteditable="true"></td>
-            <td><input type="checkbox"></td>
-        </tr>
-        <tr>
-            <td>Blueberry Muffin</td>
-            <td>6</td>
-            <td>2 Days</td>
-            <td contenteditable="true"></td>
-            <td><input type="checkbox"></td>
-        </tr>
-        <tr>
-            <td>Banana Bread</td>
-            <td>4</td>
-            <td>2 Days</td>
-            <td contenteditable="true"></td>
-            <td><input type="checkbox"></td>
-        </tr>
-        <tr>
-            <td>Lemon Loaf</td>
-            <td>4</td>
-            <td>2 Days</td>
-            <td contenteditable="true"></td>
-            <td><input type="checkbox"></td>
-        </tr>
-        <tr>
-            <td>Pumpkin Loaf</td>
-            <td>4</td>
-            <td>2 Days</td>
-            <td contenteditable="true"></td>
-            <td><input type="checkbox"></td>
-        </tr>
-        <tr>
-            <td>Coffee Cake</td>
-            <td>Have 6 at all times</td>
-            <td>2 Days</td>
-            <td contenteditable="true"></td>
-            <td><input type="checkbox"></td>
-        </tr>
-        <tr>
-            <td>Dog Cookies</td>
-            <td>Have 5 at all times</td>
-            <td>12 Days</td>
-            <td contenteditable="true"></td>
-            <td><input type="checkbox"></td>
-        </tr>
-    </table>
 
+
+{% endblock %}

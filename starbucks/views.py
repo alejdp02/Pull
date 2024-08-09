@@ -30,6 +30,17 @@ def decrementar_valor(request, item_id):
         item.save()
     return redirect('home')
 
+@login_required
+def check_needRestocking(request, item_id):
+    item = get_object_or_404(Tabla, id=item_id)
+    if request.method == 'POST':
+        if 'check_restocking' in request.POST:
+            item.check_restocking = not item.check_restocking
+        else:
+            item.check_restocking = False
+        item.save()
+    return redirect('home')
+
 
 
 def signin(request):
@@ -70,3 +81,24 @@ def signup(request):
         else:
             error = 'The passwords do not match'
             return render(request, 'signup.html', {'error':error})
+        
+        
+
+@login_required       
+def add_item(request):
+    if request.method == 'GET':
+        return render(request, 'create.html')
+    else:
+        print(request.POST)
+        data = Tabla.objects.create(item_name= request.POST['item_name'], amount= request.POST['amount'],shelf_life= request.POST['shelf_life'],)
+        print('-------', data)
+        data.save()
+        return redirect('home')
+ 
+    
+@login_required
+def delete(request, item_id):
+    item = get_object_or_404(Tabla, id=item_id)
+    if request.method == 'POST':
+        item.delete()
+    return redirect('home')

@@ -1,0 +1,95 @@
+{% extends 'base.html' %}
+{% block content %}
+<style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f2f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 400px;
+            background: #fff;
+            padding: 2rem;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        .add-item-form {
+            text-align: center;
+        }
+
+        .add-item-form h2 {
+            margin-bottom: 1.5rem;
+            color: #333;
+        }
+
+        .input-group {
+            margin-bottom: 1.5rem;
+            text-align: left;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+
+        .input-group .btn {
+            width: 100%;
+            padding: 0.75rem;
+            border: none;
+            border-radius: 4px;
+            background-color: #007bff;
+            color: #fff;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .input-group .btn:hover {
+            background-color: #0056b3;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="add-item-form">
+            <h2>Add New Item</h2>
+            <form action="{% url 'add_item' %}" method="post">
+                {% csrf_token %}
+                <div class="input-group">
+                    <label for="item_name">Item Name</label>
+                    <input type="text" id="item_name" name="item_name" required>
+                </div>
+                <div class="input-group">
+                    <label for="amount">Amount Needed</label>
+                    <input type="number" id="amount" name="amount" required>
+                </div>
+                <div class="input-group">
+                    <label for="shelf_life">Shelf Life (in days)</label>
+                    <input type="number" id="shelf_life" name="shelf_life" required>
+                </div>
+                <div class="input-group">
+                    <button type="submit" class="btn">Add Item</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+{% endblock %}
